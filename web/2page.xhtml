@@ -5,16 +5,17 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title> Senai- Sistemas Web</title>
+        <title>SENAI</title>
     </h:head>
 
     <h:form>  
         <p:growl id="messages"/>
 
         <p:menubar>
+            <p:menuitem value=" Inicial" icon="ui-icon-arrowreturnthick-1-w" outcome="index"></p:menuitem>
             <p:submenu label="Arquivo" icon="ui-icon-document">
                 <p:submenu label="Novo" icon="ui-icon-contact">
-                    <p:menuitem value="Projeto" outcome="2page"/>
+                    <p:menuitem value="Projeto" url="#" />
                     <p:menuitem value="Outros" url="#" />
                 </p:submenu>
                 <p:menuitem value="Abrir" url="#" />
@@ -38,9 +39,8 @@
             </p:submenu>
 
             <p:submenu label="Ações" icon="ui-icon-gear">
-                <p:submenu label="Jesus" icon="ui-icon-refresh">
+                <p:menuitem value="Voltar" icon="ui-icon-refresh" outcome="index"/>
 
-                </p:submenu>
             </p:submenu>
 
             <p:menuitem value="Sair" url="http://www.primefaces.org" icon="ui-icon-close" />
@@ -49,21 +49,21 @@
                 <p:commandButton type="button" value="Busca" icon="ui-icon-extlink" />
             </f:facet>
         </p:menubar>
-        
+
+        <h:form> 
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+
+            <p:panel header="SENAI">  
+                <h:panelGrid columns="2" cellpadding="5">  
+                    <p:outputLabel for="msg" value="Enive uma Mensagem...:" />   
+                    <p:inputText id="msg" value="#{growlView.message}" required="true" />  
+                </h:panelGrid>  
+
+                <p:commandButton value="Enviar" actionListener="#{growlView.saveMessage}" update="growl" />  
+            </p:panel> 
+        </h:form>  
+
     </h:form>
 
-    <p:panel header="SENAI-Teste de Sala de Aula" style="align-content: center">
-
-        <h:panelGrid columns="2">
-
-            <p:outputLabel value=" Nome do cliente" style="padding-top: 20px; align-items: center"></p:outputLabel>
-            <p:inputText size="40"></p:inputText> 
-
-            <p:outputLabel value=" Sobrenome" style="padding-right: 20%"></p:outputLabel>
-            <p:inputText size="40"></p:inputText>
-            <p:outputLabel></p:outputLabel>
-            <p:button value=" Cadastrar"></p:button>
-        </h:panelGrid>
-    </p:panel>
 </html>
 
